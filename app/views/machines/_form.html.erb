@@ -1,0 +1,32 @@
+<%= form_with(model: machine, local: true) do |form| %>
+  <% if machine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+
+      <ul>
+      <% machine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :manufacturer %>
+    <%= form.text_area :manufacturer, id: :machine_manufacturer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :model %>
+    <%= form.text_area :model, id: :machine_model %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name, id: :machine_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
