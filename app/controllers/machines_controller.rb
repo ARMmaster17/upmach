@@ -10,6 +10,7 @@ class MachinesController < ApplicationController
   # GET /machines/1
   # GET /machines/1.json
   def show
+    @parts = @machine.parts
   end
 
   # GET /machines/new

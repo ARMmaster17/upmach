@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Details</h2>
+
 <p>
   <strong>Manufacturer:</strong>
   <%= @machine.manufacturer %>
@@ -14,6 +16,12 @@
   <strong>Name:</strong>
   <%= @machine.name %>
 </p>
+
+<hr>
+
+<h2>Parts</h2>
+
+<%= render 'parts/listing' %>
 
 <%= link_to 'Edit', edit_machine_path(@machine) %> |
 <%= link_to 'Back', machines_path %>

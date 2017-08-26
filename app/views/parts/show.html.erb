@@ -22,8 +22,8 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @part.price %>
+  <%= number_to_currency(@part.price) %>
 </p>
 
-<%= link_to 'Edit', edit_part_path(@part) %> |
-<%= link_to 'Back', parts_path %>
+<%= link_to 'Edit', edit_machine_part_path(@machine, @part) %> |
+<%= link_to 'Back', machine_parts_path(@machine) %>

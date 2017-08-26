@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>Manufacturer</th>
+      <th>Model</th>
+      <th>Name</th>
+      <th>Machine</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parts.each do |part| %>
+      <tr>
+        <td><%= part.manufacturer %></td>
+        <td><%= part.model %></td>
+        <td><%= part.name %></td>
+        <td><%= part.machine %></td>
+        <td><%= number_to_currency(part.price) %></td>
+        <td><%= link_to 'Show', machine_part_path(@machine, part) %></td>
+        <td><%= link_to 'Edit', edit_machine_part_path(@machine, part) %></td>
+        <td><%= link_to 'Destroy', [@machine, part], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

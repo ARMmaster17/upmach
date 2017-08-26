@@ -2,5 +2,5 @@
 
 <%= render 'form', part: @part %>
 
-<%= link_to 'Show', @part %> |
-<%= link_to 'Back', parts_path %>
+<%= link_to 'Show', machine_part_path(@machine, @part) %> |
+<%= link_to 'Back', machine_parts_path(@machine) %>

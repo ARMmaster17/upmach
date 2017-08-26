@@ -1,34 +1,37 @@
 class PartsController < ApplicationController
   before_action :set_part, only: [:show, :edit, :update, :destroy]
+  before_action :load_machine
 
   # GET /parts
   # GET /parts.json
   def index
-    @parts = Part.all
+    @parts = @machine.parts.all
   end
 
   # GET /parts/1
   # GET /parts/1.json
   def show
+    @part = @machine.parts.find(params[:id])
   end
 
   # GET /parts/new
   def new
-    @part = Part.new
+    @part = @machine.parts.new
   end
 
   # GET /parts/1/edit
   def edit
+    @part = @machine.parts.find(params[:id])
   end
 
   # POST /parts
   # POST /parts.json
   def create
-    @part = Part.new(part_params)
+    @part = @machine.parts.new(part_params)
 
     respond_to do |format|
       if @part.save
-        format.html { redirect_to @part, notice: 'Part was successfully created.' }
+        format.html { redirect_to [@machine, @part], notice: 'Part was successfully created.' }
         format.json { render :show, status: :created, location: @part }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class PartsController < ApplicationController
   def update
     respond_to do |format|
       if @part.update(part_params)
-        format.html { redirect_to @part, notice: 'Part was successfully updated.' }
+        format.html { redirect_to [@machine, @part], notice: 'Part was successfully updated.' }
         format.json { render :show, status: :ok, location: @part }
       else
         format.html { render :edit }
@@ -62,6 +65,10 @@ class PartsController < ApplicationController
   end
 
   private
+    def load_machine
+      @machine = Machine.find(params[:machine_id])
+    end
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_part
       @part = Part.find(params[:id])
