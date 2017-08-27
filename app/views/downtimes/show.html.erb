@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @downtime.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @downtime.end_time %>
+</p>
+
+<p>
+  <strong>Machine:</strong>
+  <%= @downtime.machine %>
+</p>
+
+<%= link_to 'Edit', edit_machine_downtime_path(@machine, @downtime) %> |
+<%= link_to 'Back', machine_downtimes_path(@machine) %>

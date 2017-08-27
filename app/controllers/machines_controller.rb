@@ -1,3 +1,5 @@
+
+
 class MachinesController < ApplicationController
   before_action :set_machine, only: [:show, :edit, :update, :destroy]
 
@@ -11,7 +13,11 @@ class MachinesController < ApplicationController
   # GET /machines/1.json
   def show
     @parts = @machine.parts
-  end
+    @downtimes = @machine.downtimes
+    downtime_top = @downtimes.map{ |downtime| downtime.end_time.to_i }.sum
+    downtime_bottom = @downtimes.map{ |downtime| downtime.start_time.to_i }.sum
+    @downtime_count = downtime_top - downtime_bottom
+end
 
   # GET /machines/new
   def new

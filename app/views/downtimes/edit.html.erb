@@ -1,0 +1,6 @@
+<h1>Editing Downtime</h1>
+
+<%= render 'form', downtime: @downtime %>
+
+<%= link_to 'Show', machine_downtime_path(@machine, @downtime) %> |
+<%= link_to 'Back', machine_downtimes_path(@machine) %>

@@ -23,5 +23,9 @@
 
 <%= render 'parts/listing' %>
 
+<%= render 'downtimes/listing' %>
+
+<h3>Total downtime: <%= distance_of_time_in_words(@downtime_count) %></h3>
+
 <%= link_to 'Edit', edit_machine_path(@machine) %> |
 <%= link_to 'Back', machines_path %>

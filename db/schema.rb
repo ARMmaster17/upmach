@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826153744) do
+ActiveRecord::Schema.define(version: 20170826185222) do
+
+  create_table "downtimes", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "machine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_downtimes_on_machine_id"
+  end
 
   create_table "machines", force: :cascade do |t|
     t.text "manufacturer"
