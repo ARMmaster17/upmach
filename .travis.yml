@@ -1,0 +1,19 @@
+language: ruby
+rvm:
+    - 2.3
+    - 2.2
+    - 2.1
+    - 2.0
+    - 1.9
+services:
+    - postgresql
+install:
+    - bundle install --jobs=3 --retry=3 --deployment
+before_script:
+    - psql -c 'create database upmach_test;' -U postgres
+    - rails db:migrate
+    - rails db:seed
+script:
+    - rails test
+git:
+    depth: 3
