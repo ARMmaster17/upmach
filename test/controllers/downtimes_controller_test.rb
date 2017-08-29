@@ -6,43 +6,43 @@ class DowntimesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get downtimes_url
+    get machine_downtimes_url(@downtime.machine)
     assert_response :success
   end
 
   test "should get new" do
-    get new_downtime_url
+    get new_machine_downtime_url(@downtime.machine)
     assert_response :success
   end
 
   test "should create downtime" do
     assert_difference('Downtime.count') do
-      post downtimes_url, params: { downtime: { end_time: @downtime.end_time, machine_id: @downtime.machine_id, start_time: @downtime.start_time } }
+      post machine_downtimes_url(@downtime.machine), params: { downtime: { end_time: @downtime.end_time, machine_id: @downtime.machine_id, start_time: @downtime.start_time } }
     end
 
-    assert_redirected_to downtime_url(Downtime.last)
+    assert_redirected_to machine_downtime_url(@downtime.machine, Downtime.last)
   end
 
   test "should show downtime" do
-    get downtime_url(@downtime)
+    get machine_downtime_url(@downtime.machine, @downtime)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_downtime_url(@downtime)
+    get edit_machine_downtime_url(@downtime.machine, @downtime)
     assert_response :success
   end
 
   test "should update downtime" do
-    patch downtime_url(@downtime), params: { downtime: { end_time: @downtime.end_time, machine_id: @downtime.machine_id, start_time: @downtime.start_time } }
-    assert_redirected_to downtime_url(@downtime)
+    patch machine_downtime_url(@downtime.machine, @downtime), params: { downtime: { end_time: @downtime.end_time, machine_id: @downtime.machine_id, start_time: @downtime.start_time } }
+    assert_redirected_to machine_downtime_url(@downtime.machine, @downtime)
   end
 
   test "should destroy downtime" do
     assert_difference('Downtime.count', -1) do
-      delete downtime_url(@downtime)
+      delete machine_downtime_url(@downtime.machine, @downtime)
     end
 
-    assert_redirected_to downtimes_url
+    assert_redirected_to machine_downtimes_url(@downtime.machine)
   end
 end

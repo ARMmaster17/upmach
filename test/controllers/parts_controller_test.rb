@@ -6,43 +6,43 @@ class PartsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get parts_url
+    get machine_parts_url(@part.machine)
     assert_response :success
   end
 
   test "should get new" do
-    get new_part_url
+    get new_machine_part_url(@part.machine)
     assert_response :success
   end
 
   test "should create part" do
     assert_difference('Part.count') do
-      post parts_url, params: { part: { machine_id: @part.machine_id, manufacturer: @part.manufacturer, model: @part.model, name: @part.name, price: @part.price } }
+      post machine_parts_url(@part.machine), params: { part: { machine_id: @part.machine_id, manufacturer: @part.manufacturer, model: @part.model, name: @part.name, price: @part.price } }
     end
 
-    assert_redirected_to part_url(Part.last)
+    assert_redirected_to machine_part_url(@part.machine, Part.last)
   end
 
   test "should show part" do
-    get part_url(@part)
+    get machine_part_url(@part.machine, @part)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_part_url(@part)
+    get edit_machine_part_url(@part.machine, @part)
     assert_response :success
   end
 
   test "should update part" do
-    patch part_url(@part), params: { part: { machine_id: @part.machine_id, manufacturer: @part.manufacturer, model: @part.model, name: @part.name, price: @part.price } }
-    assert_redirected_to part_url(@part)
+    patch machine_part_url(@part.machine, @part), params: { part: { machine_id: @part.machine_id, manufacturer: @part.manufacturer, model: @part.model, name: @part.name, price: @part.price } }
+    assert_redirected_to machine_part_url(@part.machine, @part)
   end
 
   test "should destroy part" do
     assert_difference('Part.count', -1) do
-      delete part_url(@part)
+      delete machine_part_url(@part.machine, @part)
     end
 
-    assert_redirected_to parts_url
+    assert_redirected_to machine_parts_url(@part.machine)
   end
 end
