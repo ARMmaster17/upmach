@@ -14,7 +14,7 @@ end
 
 downtime = machine.downtimes.create do |d|
     d.start_time = Time.now - 90
-    d.end_time = TIme.new - 30
+    d.end_time = Time.now - 30
 end
 
 admin = User.create do |a|
