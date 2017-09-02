@@ -1,4 +1,4 @@
 class Machine < ApplicationRecord
-    has_many :parts
-    has_many :downtimes
+    has_many :parts, dependent: :destroy
+    has_many :downtimes, dependent: :destroy
 end
