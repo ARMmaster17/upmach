@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  manufacturer: MyText
-  model: MyText
-  name: MyText
+  manufacturer: BigCorp
+  model: BoxCreator
+  name: Machine One
 
 two:
-  manufacturer: MyText
-  model: MyText
-  name: MyText
+  manufacturer: RobotFactory
+  model: WidgetMaker
+  name: Machine Two
